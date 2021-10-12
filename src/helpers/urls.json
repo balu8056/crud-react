@@ -1,0 +1,8 @@
+{
+    "baseUrl": "http://localhost:7070",
+    "getjobs": "/jobs/getjobs",
+    "getjobbyid": "/jobs/getjobbyid",
+    "addjob": "/jobs/addjob",
+    "updatejobbyid": "/jobs/updatejobid",
+    "deletejobbyid": "/jobs/deletejobid"
+}
