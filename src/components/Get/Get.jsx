@@ -5,23 +5,28 @@ import Table from "../Table/Table";
 import axios from "axios";
 
 const Get = () => {
-    const [getRes, setGetRes] = useState(null)
+    const [getRes, setGetRes] = useState(null);
+
     useEffect(() => {
         document.title = "Get page"
-    }, [])
+    }, []);
+
+    const getTable = () => {
+        axios.get(`${urls.baseUrl}/${urls.getjobs}`)
+        .then(res => {
+            setGetRes(res.data.data)
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+    };
 
     useEffect(() => {
-        axios.get(`${urls.baseUrl}${urls.getjobs}`)
-            .then(res => {
-                setGetRes(res.data.data)
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-    }, [])
+        getTable();
+    }, []);
 
     return <>
-        {getRes ? <Table dataTemp={getRes}></Table> : "loading..."}
+        {getRes ? <Table dataTemp={getRes} getTable={getTable}></Table> : "loading..."}
     </>
 
 };
